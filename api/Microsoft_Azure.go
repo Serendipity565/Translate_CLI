@@ -5,9 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"gopkg.in/yaml.v3"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
+	"path/filepath"
 )
 
 type Config struct {
@@ -18,7 +20,15 @@ type Config struct {
 }
 
 func OpenYaml() (Config, error) {
-	file, err := os.Open("config/user.yaml")
+	exePath, err := os.Executable()
+	if err != nil {
+		log.Fatalf("failed to get executable path: %v", err)
+	}
+	configFilePath := filepath.Join(filepath.Dir(exePath), "config", "user.yaml")
+
+	//configFilePathForTest := "../config/user.yaml"
+
+	file, err := os.Open(configFilePath)
 	if err != nil {
 		return Config{}, err
 	}

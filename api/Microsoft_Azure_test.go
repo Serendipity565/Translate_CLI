@@ -21,26 +21,16 @@ func TestTranslate(t *testing.T) {
 	}
 }
 
-func TestOpenYaml(t *testing.T) {
-	got, err := api.OpenYaml()
-
-	// 定义期望的 Config 结构体
-	want := api.Config{
-		MicrosoftAzure: struct {
-			Key      string `yaml:"key"`
-			Location string `yaml:"location"`
-		}{
-			Key:      "12AB34CD56EF789",
-			Location: "eastasia",
-		},
-	}
-
-	// 如果出现错误，测试失败
+func TestTranslate2(t *testing.T) {
+	// 程序输出的结果
+	got, err := api.Translate("hello hello", "en", "zh")
+	fmt.Println(got, err)
+	// 期望的结果
+	want := "你好 好的"
 	if err != nil {
-		t.Fatalf("OpenYaml() failed: %v", err)
+		t.Fatalf("Translate() failed: %v", err)
 	}
-
-	// 如果实际结果与期望结果不相等，报告错误
+	// string类型的比较
 	if got != want {
 		t.Errorf("expected: %v, got: %v", want, got)
 	}
