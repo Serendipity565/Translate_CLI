@@ -1,14 +1,15 @@
 package api_test
 
 import (
-	"Translate_CLI/api"
+	"Translate_CLI/cmd"
 	"fmt"
 	"testing"
 )
 
 func TestTranslate(t *testing.T) {
 	// 程序输出的结果
-	got, err := api.Translate("你好", "zh", "en")
+	translatesever, err := cmd.NewServiceContainer()
+	got, err := translatesever.Translator.Translate("你好", "zh", "en")
 	fmt.Println(got, err)
 	// 期望的结果
 	want := "Hello"
@@ -23,7 +24,8 @@ func TestTranslate(t *testing.T) {
 
 func TestTranslate2(t *testing.T) {
 	// 程序输出的结果
-	got, err := api.Translate("hello hello", "en", "zh")
+	translatesever, err := cmd.NewServiceContainer()
+	got, err := translatesever.Translator.Translate("hello hello", "en", "zh")
 	fmt.Println(got, err)
 	// 期望的结果
 	want := "你好 好的"

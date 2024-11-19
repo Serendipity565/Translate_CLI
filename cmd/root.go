@@ -10,7 +10,7 @@ var versionFlag bool
 var version = "v1.0"
 
 var rootCmd = &cobra.Command{
-	Use:   "translate",
+	Use:   "tran",
 	Short: "A simple and efficient translation tool",
 	Long: `translate is a powerful yet easy-to-use translation tool. 
 It supports multiple languages and provides fast, accurate translations directly from the command line.
