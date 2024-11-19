@@ -7,7 +7,7 @@
 完整文档提供多种语言版本：
 
 - [中文 README](https://github.com/Serendipity565/Translate_CLI/blob/main/README.md)
-- [英文 README](https://github.com/Serendipity565/Translate_CLI/blob/main/docs/README_en.md)
+- [English README](https://github.com/Serendipity565/Translate_CLI/blob/main/docs/README_en.md)
 
 ## 功能特点
 
