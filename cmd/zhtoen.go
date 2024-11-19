@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"Translate_CLI/api"
 	"fmt"
 	"github.com/spf13/cobra"
 )
@@ -17,7 +16,8 @@ var zhtoenCmd = &cobra.Command{
 			return
 		}
 
-		res, err := api.Translate(text, "zh", "en")
+		translatesever, err := NewServiceContainer()
+		res, err := translatesever.Translator.Translate(text, "zh", "en")
 		if err != nil {
 			fmt.Printf("error:%v", err)
 			return

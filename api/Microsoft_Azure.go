@@ -53,25 +53,36 @@ type TranslateResponse struct {
 	Translations []Translation `json:"translations"`
 }
 
-func Translate(text, from, to string) (string, error) {
+type AzureTranslator struct {
+	Key      string
+	Location string
+}
+
+func NewAzureTranslator() (*AzureTranslator, error) {
 	config, err := OpenYaml()
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	key := config.MicrosoftAzure.Key
+
+	return &AzureTranslator{
+		Key:      config.MicrosoftAzure.Key,
+		Location: config.MicrosoftAzure.Location,
+	}, nil
+}
+
+func (a *AzureTranslator) Translate(text, from, to string) (string, error) {
+
 	endpoint := "https://api.cognitive.microsofttranslator.com/"
 	uri := endpoint + "/translate?api-version=3.0"
 
 	// location, also known as region.
 	// required if you're using a multi-service or regional (not global) resource. It can be found in the Azure portal on the Keys and Endpoint page.
-	location := config.MicrosoftAzure.Location
 
 	// Build the request URL. See: https://go.dev/pkg/net/url/#example_URL_Parse
 	u, _ := url.Parse(uri)
 	q := u.Query()
 	q.Add("from", from)
 	q.Add("to", to)
-
 	u.RawQuery = q.Encode()
 
 	// Create an anonymous struct for your request body and encode it to JSON
@@ -88,9 +99,9 @@ func Translate(text, from, to string) (string, error) {
 		return "", err
 	}
 	// Add required headers to the request
-	req.Header.Add("Ocp-Apim-Subscription-Key", key)
+	req.Header.Add("Ocp-Apim-Subscription-Key", a.Key)
 	// location required if you're using a multi-service or regional (not global) resource.
-	req.Header.Add("Ocp-Apim-Subscription-Region", location)
+	req.Header.Add("Ocp-Apim-Subscription-Region", a.Location)
 	req.Header.Add("Content-Type", "application/json")
 
 	// Call the Translator API
