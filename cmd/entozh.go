@@ -6,15 +6,11 @@ import (
 )
 
 var entozhCmd = &cobra.Command{
-	Use:   "en-zh", // 子命令名称
+	Use:   "en-zh <text>", // 子命令名称
 	Short: "Translate English to Chinese",
+	Args:  cobra.ExactArgs(1), // 确保必须传入一个参数
 	Run: func(cmd *cobra.Command, args []string) {
-		// 获取标志参数
-		text, _ := cmd.Flags().GetString("message")
-		if text == "" {
-			fmt.Println("No text provided for translation.")
-			return
-		}
+		text := args[0] // 从命令行参数获取输入
 
 		translatesever, err := NewServiceContainer()
 		res, err := translatesever.Translator.Translate(text, "en", "zh")

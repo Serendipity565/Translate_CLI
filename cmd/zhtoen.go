@@ -6,15 +6,11 @@ import (
 )
 
 var zhtoenCmd = &cobra.Command{
-	Use:   "zh-en", // 子命令名称
+	Use:   "zh-en <text>", // 子命令名称
 	Short: "Translate Chinese to English",
+	Args:  cobra.ExactArgs(1), // 确保必须传入一个参数
 	Run: func(cmd *cobra.Command, args []string) {
-		// 获取标志参数
-		text, _ := cmd.Flags().GetString("message")
-		if text == "" {
-			fmt.Println("No text provided for translation.")
-			return
-		}
+		text := args[0] // 从命令行参数获取输入
 
 		translatesever, err := NewServiceContainer()
 		res, err := translatesever.Translator.Translate(text, "zh", "en")
@@ -29,6 +25,4 @@ var zhtoenCmd = &cobra.Command{
 func init() {
 	// 注册子命令到根命令
 	rootCmd.AddCommand(zhtoenCmd)
-	// 添加 -m 标志，用于获取翻译的文本
-	zhtoenCmd.Flags().StringP("message", "m", "", "Text to translate")
 }

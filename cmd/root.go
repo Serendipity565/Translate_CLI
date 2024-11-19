@@ -14,7 +14,7 @@ var rootCmd = &cobra.Command{
 	Short: "A simple and efficient translation tool",
 	Long: `translate is a powerful yet easy-to-use translation tool. 
 It supports multiple languages and provides fast, accurate translations directly from the command line.
-Complete documentation is available at `,
+Complete documentation is available at https://github.com/Serendipity565/Translate_CLI`,
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		if versionFlag {
 			fmt.Println("Current version:", version)
@@ -22,12 +22,12 @@ Complete documentation is available at `,
 		}
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("run hugo...")
+		cmd.Help() // 显示帮助信息
 	},
 }
 
 func init() {
-	rootCmd.Flags().BoolVarP(&versionFlag, "version", "v", false, "Print the version number and exit")
+	rootCmd.PersistentFlags().BoolVarP(&versionFlag, "version", "v", false, "Print the version number and exit")
 }
 
 func Execute() {
