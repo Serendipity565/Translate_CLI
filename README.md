@@ -6,8 +6,8 @@
 
 完整文档提供多种语言版本：
 
-- [中文 README](https://github.com/Serendipity565/Translate_CLI/README.md)
-- [英文 README](https://github.com/Serendipity565/Translate_CLI/docs/README_zh.md)
+- [中文 README](https://github.com/Serendipity565/Translate_CLI/blob/main/README.md)
+- [英文 README](https://github.com/Serendipity565/Translate_CLI/blob/main/docs/README_en.md)
 
 ## 功能特点
 
@@ -78,7 +78,7 @@ tran [command] -v
 
 ## 文档
 
-完整文档可在 [此处](https://github.com/Serendipity565/Translate_CLI) 查看。
+完整文档可在 [此处](https://github.com/Serendipity565/Translate_CLI/blob/main/README.md) 查看。
 
 ---
 
