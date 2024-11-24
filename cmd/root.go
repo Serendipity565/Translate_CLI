@@ -7,7 +7,7 @@ import (
 )
 
 var versionFlag bool
-var version = "v1.0"
+var version = "v1.3"
 
 var rootCmd = &cobra.Command{
 	Use:   "tran",
@@ -17,7 +17,7 @@ It supports multiple languages and provides fast, accurate translations directly
 Complete documentation is available at https://github.com/Serendipity565/Translate_CLI`,
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		if versionFlag {
-			fmt.Println("Current version:", version)
+			fmt.Println("tran version:", version)
 			os.Exit(0)
 		}
 	},
@@ -27,7 +27,7 @@ Complete documentation is available at https://github.com/Serendipity565/Transla
 }
 
 func init() {
-	rootCmd.PersistentFlags().BoolVarP(&versionFlag, "version", "v", false, "Print the version number and exit")
+	rootCmd.Flags().BoolVarP(&versionFlag, "version", "v", false, "Print the version number and exit")
 }
 
 func Execute() {
