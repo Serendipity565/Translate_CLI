@@ -34,19 +34,24 @@ tran [command]
 
 ### Available Commands
 
-| Command      | Description                                              |
-|--------------|----------------------------------------------------------|
+| Command      | Description                                                |
+|--------------|------------------------------------------------------------|
 | `completion` | Generate the autocompletion script for the specified shell |
-| `en-zh`      | Translate English to Chinese                             |
-| `zh-en`      | Translate Chinese to English                             |
-| `help`       | Display help for any command                             |
+| `en-zh`      | Translate English to Chinese                               |
+| `zh-en`      | Translate Chinese to English                               |
+| `ja-en`      | Translate Japanese to English                              |  
+| `zh-ja`      | Translate Chinese to Japanese                              |  
+| `en-ja`      | Translate English to Japanese                              |  
+| `ja-zh`      | Translate Japanese to Chinese                              |  
+| `help`       | View help information for any command                      |  
+| `d`          | Auto-detect language, supports only Chinese and English    |  
 
 ### Available Flags
 
-| Flag          | Description                           |
-|---------------|---------------------------------------|
-| `-h`, `--help` | Display help for the `translate` tool |
-| `-v`, `--version` | Print the version number and exit  |
+| Flag              | Description                           |
+|-------------------|---------------------------------------|
+| `-h`, `--help`    | Display help for the `translate` tool |
+| `-v`, `--version` | Print the version number and exit     |
 
 ## Examples
 
